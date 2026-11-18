@@ -8,7 +8,7 @@ pipeline {
     }
     stage('run') {
       steps {
-        bat 'doker run -d -p 8086:80 --name con1 b1'
+        bat 'docker run -d -p 8086:80 --name con1 b1'
       }
     }
     stage('deploy') {
