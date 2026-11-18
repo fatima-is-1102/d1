@@ -1,21 +1,20 @@
 pipeline {
-  agent any
-    stages {
-      stage('build') {
-        steps {
-        echo "build done"
-        }
+  agent any 
+  stages {
+    stage('build') {
+      steps {
+        bat 'docker --version && docker build -t b1 .'
       }
-      stage('run') {
-        steps {
-          echo "run"
-        }
+    }
+    stage('run') {
+      steps {
+        bat 'doker run -d -p 8086:80 --name con1 b1'
       }
-      stage('deploy') {
-        steps {
-          echo "deployed"
-        }
+    }
+    stage('deploy') {
+      steps {
+        bat 'docker ps'
       }
     }
   }
-
+}
